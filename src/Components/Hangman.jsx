@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useEffect, useState } from "react"
 
 export default function Hangman() {
@@ -7,6 +8,7 @@ export default function Hangman() {
     const [choices, setChoices] = useState(5);
     const [options, setOptions] = useState([]);
     const [gameWon, setGameWon] = useState(false);
+    const inputRef = useRef(null)
 
 
     let URL = `https://random-word-api.herokuapp.com/word?length=${len}`
@@ -31,6 +33,7 @@ export default function Hangman() {
                 setGuessedWord("")
             }
         }
+        inputRef.current.focus()
     }
 
     let handleOptionClick = (option) => {
@@ -87,6 +90,7 @@ export default function Hangman() {
                                             height: '1.5rem',
                                             fontWeight: 'bold'
                                         }}
+                                        ref={inputRef}
                                     />
                                     <button type="submit" style={{marginTop: '10px'}}>Submit</button>
                                 </form>
