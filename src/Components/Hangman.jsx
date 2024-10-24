@@ -88,7 +88,7 @@ export default function Hangman() {
                                             fontWeight: 'bold'
                                         }}
                                     />
-                                    <button type="submit">Submit</button>
+                                    <button type="submit" style={{marginTop: '10px'}}>Submit</button>
                                 </form>
                                 :
                                 <>
