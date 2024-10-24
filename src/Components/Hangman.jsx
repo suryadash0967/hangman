@@ -61,11 +61,12 @@ export default function Hangman() {
                             <h3>Lives: {choices}</h3>
                         </div>
                         <h3>Options:</h3>
+                        <div style={{margin: '10px 0 50px 0'}}>
                         {options.map((option) => {
                             return (
                                 <button
                                     style={{
-                                        margin: '10px 10px 50px 10px',
+                                        margin: '10px',
                                         color: '#fff', fontSize: '17px'
                                     }}
                                     onClick={() => handleOptionClick(option)}
@@ -74,6 +75,7 @@ export default function Hangman() {
                                 </button>
                             )
                         })}
+                        </div>
                         {
                             !gameWon ?
                                 <form onSubmit={handleSubmit}>
