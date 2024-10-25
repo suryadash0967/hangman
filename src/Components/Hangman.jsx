@@ -68,7 +68,7 @@ export default function Hangman() {
                             return (
                                 <button
                                     style={{
-                                        margin: '5px 10px 0 5px',
+                                        margin: '5px 10px',
                                         color: '#fff', fontSize: '17px'
                                     }}
                                     onClick={() => handleOptionClick(option)}
