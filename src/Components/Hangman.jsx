@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import TextField from '@mui/material/TextField';
 
 export default function Hangman() {
@@ -8,6 +8,7 @@ export default function Hangman() {
     const [choices, setChoices] = useState(5);
     const [options, setOptions] = useState([]);
     const [gameWon, setGameWon] = useState(false);
+    const inputRef = useRef(null)
 
 
     let URL = `https://random-word-api.herokuapp.com/word?length=${len}`
@@ -31,6 +32,7 @@ export default function Hangman() {
                 setChoices(choices - 1);
                 setGuessedWord("")
             }
+            inputRef.current.focus()
         }
     }
 
@@ -85,6 +87,7 @@ export default function Hangman() {
                                         variant="outlined"
                                         onChange={handleInputChange}
                                         value={guessedWord}
+                                        inputRef={inputRef}
                                     />
                                     <button type="submit">Submit</button>
                                 </form>
