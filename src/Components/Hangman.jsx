@@ -1,5 +1,5 @@
-import { useRef } from "react";
 import { useEffect, useState } from "react"
+import TextField from '@mui/material/TextField';
 
 export default function Hangman() {
     const [word, setWord] = useState("");
@@ -8,7 +8,6 @@ export default function Hangman() {
     const [choices, setChoices] = useState(5);
     const [options, setOptions] = useState([]);
     const [gameWon, setGameWon] = useState(false);
-    const inputRef = useRef(null)
 
 
     let URL = `https://random-word-api.herokuapp.com/word?length=${len}`
@@ -33,7 +32,6 @@ export default function Hangman() {
                 setGuessedWord("")
             }
         }
-        inputRef.current.focus()
     }
 
     let handleOptionClick = (option) => {
@@ -64,12 +62,11 @@ export default function Hangman() {
                             <h3>Lives: {choices}</h3>
                         </div>
                         <h3>Options:</h3>
-                        <div style={{margin: '10px 0 50px 0'}}>
                         {options.map((option) => {
                             return (
                                 <button
                                     style={{
-                                        margin: '10px',
+                                        margin: '10px 10px 50px 10px',
                                         color: '#fff', fontSize: '17px'
                                     }}
                                     onClick={() => handleOptionClick(option)}
@@ -78,21 +75,18 @@ export default function Hangman() {
                                 </button>
                             )
                         })}
-                        </div>
                         {
                             !gameWon ?
-                                <form onSubmit={handleSubmit}>
-                                    <input
+                                <form onSubmit={handleSubmit} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
+                                    <TextField
                                         type="text"
+                                        id="outlined-basic"
+                                        label="Enter Word"
+                                        variant="outlined"
                                         onChange={handleInputChange}
                                         value={guessedWord}
-                                        style={{
-                                            height: '1.5rem',
-                                            fontWeight: 'bold'
-                                        }}
-                                        ref={inputRef}
                                     />
-                                    <button type="submit" style={{marginTop: '10px'}}>Submit</button>
+                                    <button type="submit">Submit</button>
                                 </form>
                                 :
                                 <>
@@ -105,8 +99,8 @@ export default function Hangman() {
                     :
 
                     <>
-                        <h3>Game Over!</h3>
-                        <h4>The correct word: {word}</h4>
+                        <h2>Game Over!</h2>
+                        <h3>The correct word: {word}</h3>
                     </>
             }
         </>
