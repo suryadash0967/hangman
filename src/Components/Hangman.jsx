@@ -50,8 +50,6 @@ export default function Hangman() {
         if (word) {
             let shuffledOptions = [...word].sort(() => Math.random() - 0.5);
             setOptions(shuffledOptions);
-            console.log(shuffledOptions)
-            console.log(word)
         }
     }, [word]);
     return (
