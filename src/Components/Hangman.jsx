@@ -92,7 +92,7 @@ export default function Hangman() {
                                 :
                                 <>
                                     <h3>Congratulations! You guessed right!</h3>
-                                    <h4>The correct word: {word}</h4>
+                                    <h3>The correct word: {word}</h3>
                                 </>
                         }
                     </>
